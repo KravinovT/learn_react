@@ -2,21 +2,29 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 
 class Button extends Component {
-    
-    constructor(props){
+
+    constructor(props) {
         super(props);
-        this.onClick=props.onClick;
+        this.state = {
+            buttonClickHandler: props.buttonClickHandler,
+            incrementValue: props.incrementValue
+        }
     }
 
-    render(){
+    onButtonClick = (e) => {
+        this.state.buttonClickHandler(e, this.state.incrementValue)
+    }
+
+    render() {
         return (
-            <button id="pressMe">+1</button>
+            <button id="pressMe" onClick={this.onButtonClick}>+{this.props.incrementValue}</button>
         );
-    }    
+    }
 }
 
 Button.propTypes = {
-    onClick: PropTypes.func.required
+    buttonClickHandler: PropTypes.func.required,
+    incrementValue: PropTypes.number.required
 };
 
 export default Button
