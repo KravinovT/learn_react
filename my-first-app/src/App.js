@@ -14,7 +14,7 @@ class App extends Component {
       <div id="mainDiv">
         <Button buttonClickHandler={this.onButtonClick} incrementValue={1}></Button>
         <Button buttonClickHandler={this.onButtonClick} incrementValue={10}></Button>
-        <Button buttonClickHandler={this.onButtonClick} incrementValue={20}></Button>
+        <Button buttonClickHandler={this.onButtonClick} incrementValue={-20}></Button>
 
         <Display valueToDisplay={this.state.counter}></Display>
       </div>

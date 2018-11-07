@@ -3,21 +3,15 @@ import PropTypes from 'prop-types'
 
 class Button extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            buttonClickHandler: props.buttonClickHandler,
-            incrementValue: props.incrementValue
-        }
+    onButtonClick = (e) => {
+        this.props.buttonClickHandler(e, this.props.incrementValue)
     }
 
-    onButtonClick = (e) => {
-        this.state.buttonClickHandler(e, this.state.incrementValue)
-    }
+    getSign = () => this.props.incrementValue > 0 ? '+' : ''
 
     render() {
         return (
-            <button id="pressMe" onClick={this.onButtonClick}>+{this.props.incrementValue}</button>
+            <button id="pressMe" onClick={this.onButtonClick}>{this.getSign()}{this.props.incrementValue}</button>
         );
     }
 }
