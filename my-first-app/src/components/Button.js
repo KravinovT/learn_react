@@ -11,7 +11,7 @@ class Button extends Component {
 
     render() {
         return (
-            <button id="pressMe" onClick={this.onButtonClick}>{this.getSign()}{this.props.incrementValue}</button>
+            <button onClick={this.onButtonClick}>{this.getSign()}{this.props.incrementValue}</button>
         );
     }
 }
