@@ -40,7 +40,6 @@ class App extends Component {
 
   performIncrement = (e, incrementValue) => {
     this.setState(state => ({ counter: state.counter + incrementValue }))
-    console.log("button pressed!")
   }
 
   saveName = (name) => {

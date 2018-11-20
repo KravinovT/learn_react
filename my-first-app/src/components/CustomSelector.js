@@ -5,25 +5,25 @@ class CustomSelector extends Component {
         super(props)
         this.state = {
             options: props.options,
-            selectedOption: props.selectedOption       
+            selectedOption: props.selectedOption
         }
     }
 
     render() {
-        let options = this.state.options.map(opt => (opt === this.state.selectedOption) ? <option key={opt} selected value={opt}>{opt}</option> : <option  key={opt} value={opt}>{opt}</option>)
+        let options = this.state.options.map(opt => <option key={opt} value={opt}>{opt}</option>)
 
         return (
-            <select onChange={this.onChange}>
+            <select value={this.state.selectedOption} onChange={this.onChange}>
                 {options}
             </select>
         );
     }
 
-    onChange = (event) =>{
-        if(this.props.onSelectionChangeHandler){
+    onChange = (event) => {
+        if (this.props.onSelectionChangeHandler) {
             this.props.onSelectionChangeHandler(event.target.value);
         }
-    } 
+    }
 
 }
 
