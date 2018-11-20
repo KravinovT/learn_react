@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const DEAFULT_TEXT_VALUE = 'Enter your name ...';
+const DEFAULT_TEXT_VALUE = 'Enter your name ...';
 const EXCLUDED_CHARS = ['!', '"', '£', '$']
 
 class CustomForm extends Component {
@@ -8,7 +8,7 @@ class CustomForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            textValue: DEAFULT_TEXT_VALUE,
+            textValue: DEFAULT_TEXT_VALUE,
             onSubmit: props.onSubmit
         }
     }
@@ -25,8 +25,8 @@ class CustomForm extends Component {
     onSubmit = (e) => {
         e.preventDefault()
 
-        if (this.isValid && this.props.onSubmit) {
-            this.state.onSubmit(this.state.textValue)
+        if (this.inputIsValid(this.state.textValue) && this.props.onSubmit) {
+            this.props.onSubmit(this.state.textValue)
         }
     }
 
@@ -42,7 +42,7 @@ class CustomForm extends Component {
 
     inputIsValid = (text) => {
         let isValid = true;
-        if (text === DEAFULT_TEXT_VALUE) {
+        if (text === DEFAULT_TEXT_VALUE) {
             return false;
         }
         EXCLUDED_CHARS.forEach(c => {
@@ -55,7 +55,7 @@ class CustomForm extends Component {
     }
 
     onTextAreaClick = () => {
-        if (DEAFULT_TEXT_VALUE === this.state.textValue) {
+        if (DEFAULT_TEXT_VALUE === this.state.textValue) {
             this.setState((state) => ({
                 textValue: ""
             }))
